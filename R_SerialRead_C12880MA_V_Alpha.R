@@ -8,7 +8,8 @@ graphics.off()          # Close any open graphics
 # Libraries
 #
 library(serial)
-
+library(magrittr)
+library(stringr)
 #
 # Script
 #
@@ -43,6 +44,6 @@ cat("\r\n", foo, "\r\n")
 temp <-  str_replace_all(foo, "[^[:digit:]]+", " ") %>%
   str_split(" ", simplify = TRUE) %>%
   as.numeric()
-plot(temp, xlab="Довжина хвилі", ylab="Інтенсивність", xlim=c(0, 300))
+plot(temp, xlab="Г„Г®ГўГ¦ГЁГ­Г  ГµГўГЁГ«Ві", ylab="ВІГ­ГІГҐГ­Г±ГЁГўГ­ВіГ±ГІГј", xlim=c(0, 300))
 
 close(con)
