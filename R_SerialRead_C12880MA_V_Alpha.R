@@ -13,14 +13,12 @@ library(stringr)
 #
 # Script
 #
-
 con <- serialConnection(name = "test_con",
                         port = "COM4",
                         mode = "115200,n,8,1",
                         buffering = "none",
                         newline = 1,
                         translation = "cr")
-
 #close(con)
 isOpen(con)
 open(con)
@@ -38,8 +36,8 @@ while(Sys.time() < stopTime)
     foo <- paste(foo, newText)
   }
 }
-
 cat("\r\n", foo, "\r\n")
+
 # generating the proper wavelength vector according to 
 #the calibration fitting parameters provided by Hamamastu (look Wavelength Conversion Factor Data Sets Calibration Data S/N: .....
 # https://groupgets.com/manufacturers/hamamatsu-photonics/products/c12880ma-micro-spectrometer
@@ -56,6 +54,7 @@ nm <- A_0+B_1*pix+B_2*pix**2+B_3*pix**3+B_4*pix**4+B_5*pix**5
 temp <-  str_replace_all(foo, "[^[:digit:]]+", " ") %>%
   str_split(" ", simplify = TRUE) %>%
   as.numeric()
+
 #plot(temp, xlab="Äîâæèíà õâèë³", ylab="²íòåíñèâí³ñòü", xlim=c(0, 300))
 plot (nm, temp,  type = "l", xlab="Wavelength(nm)", ylab="adu", 
       pch = 16, cex =2, lwd =3,
